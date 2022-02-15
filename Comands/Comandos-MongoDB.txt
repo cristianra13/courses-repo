@@ -1,0 +1,106 @@
+# Comandos MONGODB
+
+# Iniciamos mongo desde consola
+mongod
+
+# se debe crear una carpeta en el disco C: llamada data y una subcarpeta llamada db
+
+# se levanta un servidor de mongo en el puerto 27017
+# abrimos una nueva consola y escribimos mogno para conectarnos
+# se debe dar un enter en la consola donde se levanto el servidor 
+
+# en coclusión, con mongod iniciamos mongo y con mongo para conectarnos a la BD y realizar las operaciones que necesitemos
+
+CONCEPTOS DE MONGO:
+
+BASE DE DATOS:
+En mongo al almacenaje de datos se le conoce como colecciones, dentro de estas podemos tener una colección de objetos, por ejemplo coleccion de usuarios, de productos, etc...
+La data se guarda dentro de un objeto JSON
+
+# Base de datos actual:
+db
+
+# Todas las bases de datos disponibles:
+show dbs
+
+# mostrar ayudas para administración y comandos:
+db.help()
+
+# Crear una base de datos, la base de datos no se ve reflejada, hasta no insertar un dato como minimo
+use name_db
+
+# Crear una colección:
+db.name_collection
+
+# Insertar un dato
+db.name_collection.insert(JSON)
+Ej: db.webstore.insert({"name":"laptop})
+
+# ver las colecciones de la base de datos actual:
+show collections
+
+# eliminar base de datos actual:
+db.dropDatabase()
+
+# Metodo para crear una colección
+db.createCollection("name_collection")
+
+# Eliminar una colección de la base de datos actual:
+db.name_collection.drop()
+
+
+## DOCUMENTOS
+
+# crear una coleccion insertando de una vez un dato:
+db.products.insert({
+	"name": "laptop",
+	"price": 1750.99,
+	"isActive": true,
+	"createAt": new Date("12/12/2020"),
+	"features": [1, "red", []],
+	"facturer": {
+		"name": "dell",
+		"version": "xps",
+		"location": {
+			"city": "NY",
+			"address": "street 48"
+		}
+	}
+})
+
+
+# buscar todos los datos de una coleccion:
+db.name_collection.find()
+
+# buscar todos los datos de una coleccion y ver ordenado el JSON:
+db.name_collection.find().pretty()
+
+# insertar varios datos al tiempo:
+db.products.insert([
+	{
+		"name": "mouse",
+		"desc": "Rayzer mouse",
+		"tags": ["computers", "gaming"],
+		"quantity": 12,
+		"createdAt": new Date()
+	},
+	{
+		"name": "monitor",
+		"desc": "LG monitor",
+		"tags": ["computers", "gaming"],
+		"quantity": 3,
+		"createdAt": new Date()
+	}
+])
+
+# buscar un solo documento:
+db.products.find({name: "mouse"})
+
+# devolver el primer documentos:
+db.name_collection.findOne()
+
+# buscar propiedades de documentos
+db.name_collection.findOne({"tags: "computers"}, {"name": 1, "desc": 1})
+
+# consulta sin id:
+db.products.findOne({"tags": "computers"}, {"name": 1, "desc": 1, "_id": 0})

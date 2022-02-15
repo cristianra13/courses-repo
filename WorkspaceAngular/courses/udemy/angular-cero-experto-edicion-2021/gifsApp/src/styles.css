@@ -1,0 +1,12 @@
+html, body
+ {
+   height: 100%;
+ }
+
+ #sidebar {
+   /* Tamaño máximo de toda la pantalla */
+   height: 100%;
+   /* Tamaño mínimo de toda la pantalla */
+   min-height: 100vh;
+   min-width: 180px;
+ }

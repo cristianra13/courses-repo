@@ -1,0 +1,32 @@
+#server.port=8443
+server.ssl.key-alias=selfsigned_localhost_sslserver
+server.ssl.key-password=changeit
+server.ssl.key-store=classpath:ssl-server.jks
+server.ssl.key-store-provider=SUN
+server.ssl.key-store-type=JKS
+
+
+
+p@ssw0rd
+
+
+keytool -genkey -v -keystore [your keystore file path]{C:/index.keystore} -alias [your_alias_name]{index} -keyalg RSA -keysize 2048 -validity 10000[in days]
+
+keytool -genkey -alias bootsecurity -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore bootsecurity.p12 -validity 3650
+
+Generate JKS:
+keytool -genkey -alias local_cert_ssl -keyalg RSA -keysize 2048 -validity 3650 -keypass p@ssw0rd -storepass p@ssw0rd -keystore ssl_server.jks
+
+
+keytool -list -keystore ssl_server.jks
+
+
+In the client service:
+server.ssl.key-alias=selfsigned_localhost_sslserver
+server.ssl.key-password=changeit
+server.ssl.key-store=classpath:ssl-server.jks
+server.ssl.key-store-provider=SUN
+server.ssl.key-store-type=JKS
+server.ssl.client-auth=want
+
+in ther server service:

@@ -1,0 +1,17 @@
+{
+    "name": "03-bases-node",
+    "version": "2.0.0",
+    "description": "Descripción de lo que va a hacer la aplicación",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Cristian Real",
+    "license": "ISC",
+    "dependencies": {
+        "yargs": "^16.1.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
+}

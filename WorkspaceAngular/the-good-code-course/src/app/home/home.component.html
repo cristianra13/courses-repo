@@ -1,0 +1,46 @@
+{{people | json}}
+<p>Welcome 🌎 to 🚀</p>
+<!--Escuchamos a (clickEvent) que está en app-blue.ts, que cuando emita un evento, este html que es el padre, lo escuche e imprima el valor que recobe del hijo-->
+<!--
+  En resumen: cuando el evento clicEvent que esta en blue.component.ts sepa que dieron un clic en el recuadro, este emitira
+  un evento el cual será escuchado por home.component.ts
+  Este evento emite la cantidad de clics que se hacen, los cuales se recibiran en home.component.ts por el metodo onBlueClicks
+  y así, este asignara a la variable blueClicks el número que nos da el hijo
+  IMPORTANTE: Cabe recordar que siempre escuchamos con un metodo en este caso el onBlueClicks()
+  IMPORTANTE: Para poder recoger el evento, debemos pasar en el metodo que escucha el valor $event y así mismo el metodo debe recibir
+-->
+<app-blue *ngIf="blueClicks < 10" [title]="blueTitle" (clickEvent)="onBlueClicks($event)"></app-blue>
+<app-green *ngIf="greenClicks < 10" [title]="greenTitle" (clickEvent)="onGreenClicks($event)"></app-green>
+<!--<app-red [title]="redTitle" (clickEvent)="onRedClicks($event)"></app-red>-->
+<!--
+Otra forma que podemos usar para poder obtener los clics
+Es decirle a la variable redClicks de home.component que va a ser igual al evento
+redClicks = $event
+ -->
+<app-red *ngIf="redClicks < 10" [title]="redTitle" (clickEvent)="redClicks = $event"></app-red>
+
+<p>Blue: {{blueClicks}}</p>
+<p>Green: {{greenClicks}}</p>
+<p>Red: {{redClicks}}</p>
+
+<!--Usamos one-way data-binding-->
+<!--<input type="text" [value]="message"  placeholder="Type a message">-->
+
+<!--Usamos two-way data-binding
+Para usar ngModel, debemos hacer el import de FormsModule ya sea en home.component.ts o en app.module para usarlo de forma global
+
+De está forma [ngModel]="message" (ngModelChange)="message = $event" tambien tenemos two-way data-binding
+IMPORTANTE: si se va a hacer two-way data-binding de esta manera el input debe ir con ngModel y el output finalizar con Change
+Ejemplo: si fuese el input un [title] el output debería ser (titleChange) con eso cumplimos la nomenclatura de data-binding
+
+por lo que con [ngModel]="message" enviamos desde el component a la vista
+y con (ngModelChange)="message = $event" recogemos lo de la vista y lo setea dentro de una variable
+o propiedad que está en nuestro componente
+-->
+<!--<input type="text" [ngModel]="message" (ngModelChange)="message = $event" placeholder="Type a message">-->
+
+<input type="text" [(ngModel)]="message" placeholder="Type a message">
+<br>
+<pre>{{message}}</pre>
+
+<button (click)="reset()">RESET</button>

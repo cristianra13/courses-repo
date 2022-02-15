@@ -1,0 +1,378 @@
+COMANDOS GIT:
+
+Configuración global de usuario:
+git config -g user.email "your email"
+git config -g user.name "your name"
+
+git config --global user.email "your email"
+git config --global user.name "your name"
+
+
+Configuración local de usuario:
+git config --local user.email "your email"
+git config --local user.name "your name"
+
+Ver que configuraciones que se pueden hacer en git:
+git config
+
+Ver configuración por defecto de gitr:
+git config -l
+git config --list
+git config --global --list
+git config --local --list
+
+Ver donde se almacenan las configuraciones:
+git config -l --show-origin
+git config --list --show-origin
+
+Ver contenido de un archivo:
+cat <nombre_archivo>
+
+Inicializar un repositorio vacio:
+git init
+
+Ver el estatus del proyecto:
+git status
+
+Trackear archivos:
+git add .
+
+Trackear un solo archivo:
+git add <nombre_archivo>
+
+Agregar cambios al repositorio local:
+git commit -m "<comentario_del_cambio>"
+git commit -m "acá se agrega un comentario y es buena practica"
+
+Combinar git add y commit (solo funciona con archivos que ya se les habia hecho un add, no con nuevos):
+git commit -am "<comentario>"
+
+Remover un archivo del tracker o cache:
+git rm --cached <nombre_archivo>
+
+Remover un archivo del tracker o cache y del disco duro:
+git rm --force <nombre_archivo>
+
+Ver historial de un archivo:
+git log <nombre_archivo>
+
+Ver cambios especificos de un archivos a partir del commit:
+git log --stat
+
+Ver cambios de un archivo:
+git show <nombre_archivo>
+
+Comparar dos commits hechos (diff):
+git diff <primer_codigo_commit> <segundo_codigo_commit>
+
+Comparar un archivo que este en staging con el mismo que se le hicieron cambios:
+git diff
+
+Volver a una versión anterior:
+git reset <codigo_commit>
+
+Volver a una versión anterior todo (--hard):
+git reset <codigo_commit> --hard
+
+Sacar archivos del staging:
+git reset HEAD <nombre_archivo>
+
+Volver a una versión anterior manteniendo los que este en staging, ahí mismo.
+es decir, si se hacen cambios y se les da un git add, estos se mantienen, con
+la instrucción anterior no:
+git reset <codigo_commit> --soft
+
+Ir a un commit especifico:
+git checkout <codigo_commit>
+
+Ir a un commit especifico de un archivo:
+git checkout <codigo_commit> <nombre_archivo>
+
+Clonar un repositorio:
+git clone <url_remoto>
+
+subir un cambio a un repositorio remoto:
+git push
+
+Traer actualizaciones al repositorio local pero no los agrega a los archivos:
+git fetch
+
+Traer cambios del repositorio remoto:
+git pull
+
+
+Guardar cambios en memoria - stash:
+git stash
+
+Guardar cambios en memoria - stash con comentarios:
+git stash
+
+Ver cambios guardados en stash:
+git stash list
+
+Tomar ultimo cambio guardado en stash y poner el en staging:
+git stash pop
+
+Tomar un stash especifico y eliminarlo del stash:
+git stash pop stash@{<numero_del_stash>}
+
+Para retomar los cambios de una posición específica del Stash puedes utilizar el comando:
+git stash apply stash@{<num_stash>}
+
+Borrar ultimo stash:
+git stash drop
+
+Borrar un stash especifico:
+git stash drop
+
+Limpiar todo el stash:
+git stash clear
+
+Poner un stash en una rama (esto crea la rama automaticamente):
+git stash branch <nombre_rama>
+
+
+Borrar archivos creados por error (esto simula lo que se va a borrar+):
+git clean --dry-run
+
+Traer commits a otra rama (se debe estár parado en la rama a donde se va atraer el cambio):
+git cherry-pick <codigo_commit>
+
+Pegar los cambios nuevos al commit anterior(remendar):
+git add <nombre_archivo(s)>
+git commit --amend
+
+Ver todo lo que ha sucedido en git:
+git reflog
+
+
+Volver a una posición de un HEAD anterior (esto en caso de que algo pase), primero usar git reflog para tomar el codigo del HEAD este es un reset soft:
+git reset HEAD@{<codigo_del_head>}
+
+Hacer un reset HARD el cual devuelve todo antes del commit:
+git reset --HARD <codigo_commit>
+
+Buscar archivos o commits en git(Este comando nos indica donde se usa el cristerio_de_busqueda):
+git grep <cristerio_de_busqueda>
+
+Buscar archivos o commits en git con la respectiva linea del archivo(Este comando nos indica donde se usa el cristerio_de_busqueda):
+git grep -n <cristerio_de_busqueda>
+
+Buscar archivos o commits en git y contar la cantidad de veces que se encuentre(Este comando nos indica donde se usa el cristerio_de_busqueda):
+git grep -c <cristerio_de_busqueda>
+
+Buscar algo en el log de git bajo un criterio de busqueda:
+git log -S "<cristerio_de_busqueda"
+
+Otros de busqueda:
+git grep color -->use la palabra color
+git grep la --> donde use la palabra la
+git grep -n color–> en que lineas use la palabra color
+git grep -n platzi --> en que lineas use la palabra platzi
+git grep -c la --> cuantas veces use la palabra la
+git grep -c paltzi --> cuantas veces use la palabra platzi
+git grep -c “<p>”–> cuantas veces use la etiqueta <p>
+
+git log-S “cabecera” --> cuantas veces use la palabra cabecera en
+todos los commits.
+
+grep–> para los archivos
+log --> para los commits.
+
+
+
+Ver cuantos commits ha hecho una persona:
+git shortlog
+
+Ver cuantos commits ha hecho una persona - ciertos commit:
+git shortlog -sn
+
+Ver todos los commits ha hecho una persona:
+git shortlog -sn --all
+
+Ver todos los commits ha hecho una persona sin merges:
+git shortlog -sn --all --no-merges
+
+===================================================
+RAMAS:
+
+Ver ramas existentes localmente:
+git branch
+
+Ver ramas remotas existentes:
+git branch -r
+
+Ver ramas existentes local y remotamente:
+git branch -a
+
+crear una rama:
+git branch <nombre_rama>
+
+crear una rama y posarme sobre ella:
+git checkout -b <nombre_rama>
+
+Ver la historia de una rama:
+git show-branch
+
+Eliminar una rama local:
+git branch -d <nombre_rama>
+
+Eliminar una rama del repositorio remoto:
+git branch -D <nombre_rama>
+
+Ver la historia de una rama con máas datos:
+git show-branch --all
+
+Abrir en una ventana el historial (Más visuaL):
+gitk
+
+Enviar una rama al repositorio remoto:
+git push origin <nombre_rama
+
+FORK:
+Con Fork se toma una copia del estado actual del proyecto y clonarlo
+
+Agregar una nueva fuente de donde traer datos, esto sirve cuando hacemos un frok de un proyecto:
+git remote add <nombre_personalizado> <url_git>
+
+Traer cambios del proyecto base al cual se le hizo un fork:
+git pull <nombre_personalizado> <rama_local>
+git pull upstream master
+
+
+Agarrar una rama entera y pegarla toda en otra rama (esto es mala practica enviandola a repositorios remotos):
+con rebase, se reescribe la historia del repositorio.
+Para esto me paro en la rama que no sea master, porque le decimos que pegue la historia a la historia del master:
+
+git rebase <nombre_rama> master
+
+Primero se hace rebase a la rama que cambia,
+luego rebase a la rama final
+
+
+Ver quien hizo que en un archivo (linea por linea):
+git blame <nombre_archivo>
+
+Ver quien hizo que en un archivo (linea por linea) mejor identado:
+git blame -c <nombre_archivo>
+
+Ver quien modifico el contenido de un archivo desde una linea hasta otra linea:
+git blame <nombre_archivo> -L <numero_linea>,<numero_linea> -c
+
+Ver como funciona un comando (este abre el manual de git que esta en la maquina):
+git <comando> --help
+
+ejemplo:
+git blame --help
+
+===================================================
+ORIGENES REMOTOS:
+
+Agregar origen remoto:
+git remote add origin <url>
+
+Ver origenes remotos agregados:
+git remote -v
+
+Traer cambios del origen remoto:
+git pull origin master
+
+Traer cambios del origen remoto historias relacionadas:
+git pull origin master --allowed-unrelated-histories
+
+Enviar al origen remoto la rama:
+git push origin master
+
+Cambiar url remota:
+git remote set-url origin <nueva_url_remota>
+
+===================================================
+LLAVES SSH:
+
+Crear llave ssh en git:
+ssh-keygen -t rsa -b 4096 -C "<email_de_git>"
+
+Validar si el agente de ssh está corriendo en windows (si devuelve un PID todo está correcto):
+eval $(ssh-agent -s)
+
+Agregar la llave al SO (debe ser la privada) esto es posicionandonos donde esta la llave:
+ssh-add <nombre_llave_privada>
+u otro comando:
+ssh-add
+
+===================================================
+ALIAS:
+
+agregar un alias de un comando:
+alias <alias>="<comando>"
+alias gs="git status"
+
+
+Agregar un alias en git para toda su configuración global (donde va el comando, esta parte va sin la palabra git):
+git config --global alias.<nombre_alias> "<comando>"
+
+git config --global alias.s "staus"
+
+para usar:
+git s
+
+===================================================
+ETIQUETAS - TAGS:
+
+para crear un tag:
+1. se copia el hash del commit: 949061d
+2. git tag -a <nombre_tag> -m "<comentario" <codigo_hash>
+    git tag -a v1.0 -m "Resultado del codigo primeras versiones" 949061d
+
+
+Ver mis tags:
+git tag
+
+Ver a que commit está conectado un tag:
+git show-ref --tags
+
+Subir un tag al repositorio:
+git push origin --tags
+git push --tags
+
+Borrar un tag:
+git tag -d <nombre_tag>
+
+Borrar tag en repositorio remoto:
+git push origin :refs/tags/<nombre_tag>
+
+===================================================
+
+===================================================
+COMANDOS EJECUTADOS:
+
+Ver ultimos comandos ejecutados:
+history
+===================================================
+
+Otros comandos importantes:
+
+Algunos comandos que pueden ayudar cuando colaboren con proyectos muy grandes de github:
+
+git log --oneline - Te muestra el id commit y el título del commit.
+git log --decorate - Te muestra donde se encuentra el head point en el log.
+git log --stat - Explica el número de líneas que se cambiaron brevemente.
+git log -p- Explica el número de líneas que se cambiaron y te muestra que se cambió en el contenido.
+git shortlog - Indica que commits ha realizado un usuario, mostrando el usuario y el titulo de sus commits.
+git log --graph --oneline --decorate y
+git log --pretty=format:"%cn hizo un commit %h el dia %cd" - Muestra mensajes personalizados de los commits.
+git log -3 - Limitamos el número de commits.
+git log --after=“2018-1-2” ,
+git log --after=“today” y
+git log --after=“2018-1-2” --before=“today” - Commits para localizar por fechas.
+git log --author=“Name Author” - Commits realizados por autor que cumplan exactamente con el nombre.
+git log --grep=“INVIE” - Busca los commits que cumplan tal cual está escrito entre las comillas.
+git log --grep=“INVIE” –i- Busca los commits que cumplan sin importar mayúsculas o minúsculas.
+git log – index.html- Busca los commits en un archivo en específico.
+git log -S “Por contenido”- Buscar los commits con el contenido dentro del archivo.
+git log > log.txt - guardar los logs en un archivo txt
+
+
+===================================================
+Servicio de hosting gratis de GitHub:
+https://pages.github.com/

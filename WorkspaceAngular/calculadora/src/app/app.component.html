@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1>{{title}}</h1>
+  <app-formulario
+    (resultadoSuma)="onResultado($event)"
+  ></app-formulario>
+  <!-- enviamos desde la clase padre el resultado a la clase hija -->
+  <app-resultado
+    [resultado]="resultadoPadre"
+  ></app-resultado>
+</body>
+</html>

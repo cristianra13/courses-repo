@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="app.moels.CuentaTest" time="0.954" tests="62" errors="0" skipped="9" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\Personal\Programing\WorkspaceSpring\Spring-2021\Cursos\Udemy\TestingJava-Junit-Mockito\junit-app\target\test-classes;D:\Personal\Programing\WorkspaceSpring\Spring-2021\Cursos\Udemy\TestingJava-Junit-Mockito\junit-app\target\classes;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.0-M1\junit-jupiter-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.0-M1\junit-jupiter-api-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\tin93\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\tin93\.m2\repository\org\junit\platform\junit-platform-commons\1.8.0-M1\junit-platform-commons-1.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.0-M1\junit-jupiter-params-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.0-M1\junit-jupiter-engine-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\platform\junit-platform-engine\1.8.0-M1\junit-platform-engine-1.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.4.20\kotlin-stdlib-jdk8-1.4.20.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.4.20\kotlin-stdlib-1.4.20.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.4.20\kotlin-stdlib-common-1.4.20.jar;C:\Users\tin93\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.4.20\kotlin-stdlib-jdk7-1.4.20.jar;C:\Users\tin93\.m2\repository\org\projectlombok\lombok\1.18.20\lombok-1.18.20.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="user.timezone" value="America/Bogota"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.11\bin"/>
+    <property name="sun.java.command" value="C:\Users\tin93\AppData\Local\Temp\surefire11921164221804969364\surefirebooter16260163669707168007.jar C:\Users\tin93\AppData\Local\Temp\surefire11921164221804969364 2021-06-22T20-54-01_260-jvmRun1 surefire10782824772818439488tmp surefire_03955022844209129600tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\Personal\Programing\WorkspaceSpring\Spring-2021\Cursos\Udemy\TestingJava-Junit-Mockito\junit-app\target\test-classes;D:\Personal\Programing\WorkspaceSpring\Spring-2021\Cursos\Udemy\TestingJava-Junit-Mockito\junit-app\target\classes;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.0-M1\junit-jupiter-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.0-M1\junit-jupiter-api-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\tin93\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\tin93\.m2\repository\org\junit\platform\junit-platform-commons\1.8.0-M1\junit-platform-commons-1.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.0-M1\junit-jupiter-params-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.0-M1\junit-jupiter-engine-5.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\junit\platform\junit-platform-engine\1.8.0-M1\junit-platform-engine-1.8.0-M1.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.4.20\kotlin-stdlib-jdk8-1.4.20.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.4.20\kotlin-stdlib-1.4.20.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.4.20\kotlin-stdlib-common-1.4.20.jar;C:\Users\tin93\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Users\tin93\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.4.20\kotlin-stdlib-jdk7-1.4.20.jar;C:\Users\tin93\.m2\repository\org\projectlombok\lombok\1.18.20\lombok-1.18.20.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\tin93"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2021-04-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-11.0.11"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\Personal\Programing\WorkspaceSpring\Spring-2021\Cursos\Udemy\TestingJava-Junit-Mockito\junit-app"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\tin93\AppData\Local\Temp\surefire11921164221804969364\surefirebooter16260163669707168007.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.11+9-LTS-194"/>
+    <property name="user.name" value="tin93"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="localRepository" value="C:\Users\tin93\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\tin93\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.11"/>
+    <property name="user.dir" value="D:\Personal\Programing\WorkspaceSpring\Spring-2021\Cursos\Udemy\TestingJava-Junit-Mockito\junit-app"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-11.0.11\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk-11.0.11\bin;C:\complements-apps\apache-maven-3.6.3\bin;D:\Users\tin93\AppData\Roaming\nvm;D:\Program Files\nodejs;C:\complements-apps\gradle-4.10.3\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;D:\Program Files\Git\cmd;D:\Program Files\Kubernetes\Minikube;C:\Users\tin93\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2021.1.2\bin;;D:\Users\tin93\AppData\Roaming\nvm;D:\Program Files\nodejs;C:\Users\tin93\AppData\Local\Programs\Microsoft VS Code\bin;."/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.version" value="11.0.11+9-LTS-194"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="transferirDineroEntreCuentasTest" classname="app.moels.CuentaTest" time="0.048"/>
+  <testcase name="saldoMayorQueCeroFalseTest" classname="app.moels.CuentaTest" time="0.01"/>
+  <testcase name="nombreCuentaTest" classname="app.moels.CuentaTest" time="0.012"/>
+  <testcase name="debitoCuentaRepiteTest{RepetitionInfo}[1]" classname="app.moels.CuentaTest" time="0.008"/>
+  <testcase name="debitoCuentaRepiteTest{RepetitionInfo}[2]" classname="app.moels.CuentaTest" time="0.007"/>
+  <testcase name="debitoCuentaRepiteTest{RepetitionInfo}[3]" classname="app.moels.CuentaTest" time="0.01"/>
+  <testcase name="saldoCuenta" classname="app.moels.CuentaTest" time="0.004"/>
+  <testcase name="relacionBancoCuentasTest" classname="app.moels.CuentaTest" time="0.008"/>
+  <testcase name="debitoCuentaTest" classname="app.moels.CuentaTest" time="0.011"/>
+  <testcase name="saldoMayorQueCeroTrueTest" classname="app.moels.CuentaTest" time="0.009"/>
+  <testcase name="dineroInsuficienteException" classname="app.moels.CuentaTest" time="0.006"/>
+  <testcase name="nombreCuentaInyeccionDependenciasTest" classname="app.moels.CuentaTest" time="0.014"/>
+  <testcase name="creditoCuentaTest" classname="app.moels.CuentaTest" time="0.007"/>
+  <testcase name="referenciaCuentaTest" classname="app.moels.CuentaTest" time="0.007"/>
+  <testcase name="debitoCuentaParametrizedMethodSourceTest{String}[1]" classname="app.moels.CuentaTest" time="0.011"/>
+  <testcase name="debitoCuentaParametrizedMethodSourceTest{String}[2]" classname="app.moels.CuentaTest" time="0.012"/>
+  <testcase name="debitoCuentaParametrizedMethodSourceTest{String}[3]" classname="app.moels.CuentaTest" time="0.01"/>
+  <testcase name="debitoCuentaParametrizedMethodSourceTest{String}[4]" classname="app.moels.CuentaTest" time="0.01"/>
+  <testcase name="debitoCuentaParametrizedMethodSourceTest{String}[5]" classname="app.moels.CuentaTest" time="0.015"/>
+  <testcase name="debitoCuentaParametrizedMethodSourceTest{String}[6]" classname="app.moels.CuentaTest" time="0.011"/>
+  <testcase name="debitoCuentaParametrizedMethodSourceTest{String}[7]" classname="app.moels.CuentaTest" time="0.01"/>
+  <testcase name="app.moels.CuentaTest$TimeOutTests" classname="app.moels.CuentaTest$TimeOutTests" time="0">
+    <skipped message="class app.moels.CuentaTest$TimeOutTests is @Disabled"/>
+  </testcase>
+  <testcase name="saldoCuentaDevTest" classname="app.moels.CuentaTest$AssumptionsTest" time="0">
+    <skipped message="Assumption failed: assumption is not true" type="org.opentest4j.TestAbortedException">org.opentest4j.TestAbortedException: Assumption failed: assumption is not true
+	at app.moels.CuentaTest$AssumptionsTest.saldoCuentaDevTest(CuentaTest.java:372)
+</skipped>
+    <system-out><![CDATA[Ejecutando: saldoCuentaDevTest para el DisplayName: saldoCuentaDevTest() con los tags: []
+null
+]]></system-out>
+  </testcase>
+  <testcase name="saldoCuentaDev2Test" classname="app.moels.CuentaTest$AssumptionsTest" time="0.007"/>
+  <testcase name="ifjavaHomeExists" classname="app.moels.CuentaTest$VarEnvironmentTest" time="0">
+    <skipped message="Environment variable [JAVA_HOME] with value [C:\Program Files\Java\jdk-11.0.11] does not match regular expression [.*jdk1.8.0_271.*]"/>
+  </testcase>
+  <testcase name="prinEnvVariables" classname="app.moels.CuentaTest$VarEnvironmentTest" time="0.352"/>
+  <testcase name="solo64bitsSO" classname="app.moels.CuentaTest$SystemPrpertiesTest" time="0.008"/>
+  <testcase name="ifEnvisDev" classname="app.moels.CuentaTest$SystemPrpertiesTest" time="0">
+    <skipped message="System property [ENV] does not exist"/>
+  </testcase>
+  <testcase name="solo32bitsSO" classname="app.moels.CuentaTest$SystemPrpertiesTest" time="0">
+    <skipped message="System property [os.arch] with value [amd64] does not match regular expression [.*32.*]"/>
+  </testcase>
+  <testcase name="javaVersion" classname="app.moels.CuentaTest$SystemPrpertiesTest" time="0.008"/>
+  <testcase name="onJre11" classname="app.moels.CuentaTest$JavaVersiontest" time="0">
+    <skipped message="Disabled on JRE version: 11.0.11"/>
+  </testcase>
+  <testcase name="soloJava8" classname="app.moels.CuentaTest$JavaVersiontest" time="0">
+    <skipped message="Disabled on JRE version: 11.0.11"/>
+  </testcase>
+  <testcase name="soloJava11" classname="app.moels.CuentaTest$JavaVersiontest" time="0.009"/>
+  <testcase name="onWindows" classname="app.moels.CuentaTest$SistemaOperativoTest" time="0">
+    <skipped message="Disabled on operating system: Windows 10"/>
+  </testcase>
+  <testcase name="soloWindows" classname="app.moels.CuentaTest$SistemaOperativoTest" time="0.006"/>
+  <testcase name="soloLinuxYMac" classname="app.moels.CuentaTest$SistemaOperativoTest" time="0">
+    <skipped message="Disabled on operating system: Windows 10"/>
+  </testcase>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[1]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.015"/>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[2]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.014"/>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[3]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.011"/>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[4]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.009"/>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[5]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.012"/>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[6]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.01"/>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[7]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.009"/>
+  <testcase name="debitoCuentaParametrizedCsvSourceTest{String}[8]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.011"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest2{String, String, String, String}[1]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.015"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest2{String, String, String, String}[2]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.013"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest2{String, String, String, String}[3]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.012"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest2{String, String, String, String}[4]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.011"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest2{String, String, String, String}[5]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.013"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest2{String, String, String, String}[6]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.012"/>
+  <testcase name="debitoCuentaParametrizedTest{String}[1]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.009"/>
+  <testcase name="debitoCuentaParametrizedTest{String}[2]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.009"/>
+  <testcase name="debitoCuentaParametrizedTest{String}[3]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.009"/>
+  <testcase name="debitoCuentaParametrizedTest{String}[4]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.008"/>
+  <testcase name="debitoCuentaParametrizedTest{String}[5]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.01"/>
+  <testcase name="debitoCuentaParametrizedTest{String}[6]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.008"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest{String, String}[1]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.009"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest{String, String}[2]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.012"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest{String, String}[3]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.009"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest{String, String}[4]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.01"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest{String, String}[5]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.013"/>
+  <testcase name="debitoCuentaParametrizedValueSourceTest{String, String}[6]" classname="app.moels.CuentaTest$PruebasParametrizadas" time="0.01"/>
+</testsuite>

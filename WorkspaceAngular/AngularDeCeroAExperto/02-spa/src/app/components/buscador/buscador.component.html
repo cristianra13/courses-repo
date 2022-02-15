@@ -1,0 +1,23 @@
+<h1>Buscando: <small>{{termino}}</small> </h1>
+<hr>
+
+<div class="row animated fadeIn fast" *ngIf="heroes.length == 0">
+    <div class="col-md-12">
+        <div class="alert alert-info">
+            No existen resultados con el término: {{termino}}
+        </div>
+    </div>
+</div>
+
+<div class="card-columns">
+
+    <!-- Decimos que vamos a tomar heroe.idx del arreglo que devuelve el servicio
+    y se lo vamos a envíar a la clase hija que es HeroeTarjetaComponent, para que este haga la redirección
+    en el metodo verHeroe() -->
+    <app-heroe-tarjeta [heroe]="heroe" [index]="heroe.idx" *ngFor="let heroe of heroes">
+
+    </app-heroe-tarjeta>
+
+
+
+</div>

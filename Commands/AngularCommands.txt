@@ -1,0 +1,39 @@
+Comandos Angular:
+https://github.com/angular/angular-cli/wiki/generate-component
+
+
+Crear proyecto desde CLI:
+ng new name_project
+
+Iniciar server:
+ng server
+
+Inciar server y abrir en navegadpr
+ng server -o
+
+crear componente desde CLI:
+ng generate component persona
+
+Abreviado:
+ng g c persona
+
+Instalación de Bootstrap dentro de los modulos de node:
+npm install bootstrap --save
+
+Instalación de JQuery dentro de los modulos de node:
+npm install jquery --save
+
+Instalación de popper dentro de los modulos de node:
+npm install popper.js --save
+
+instalar modulos de angular o node_modules:
+npm install
+
+Instalar compatibilidad de redux con angular:
+npm install --save @ngrx/store @ngrx/effects
+
+Crear componente despues sin crear test o spec:
+ng g c blue --skip-test
+
+Crear archivo de rutas en angular por consola:
+ng generate module app-routing --flat --module=app

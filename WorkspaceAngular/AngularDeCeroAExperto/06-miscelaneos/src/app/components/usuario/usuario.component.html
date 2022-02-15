@@ -1,0 +1,10 @@
+<div class="col-md-12 text-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-light" routerLinkActive="active" [routerLink]="['nuevo']">Nuevo</button>
+        <button type="button" class="btn btn-light" routerLinkActive="active" [routerLink]="['editar']">Editar</button>
+        <button type="button" class="btn btn-light" routerLinkActive="active" [routerLink]="['detalle']">Detalle</button>
+    </div>
+</div>
+
+<!-- renderiza las rutas hojas -->
+<router-outlet></router-outlet>

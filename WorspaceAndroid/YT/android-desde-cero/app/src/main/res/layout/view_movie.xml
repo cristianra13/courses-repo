@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <com.app.android.ApectRatioImageView
+        android:id="@+id/cover2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        app:ratio="1.5"
+        app:srcCompat="@drawable/avengers">
+
+    </com.app.android.ApectRatioImageView>
+
+    <TextView
+        android:id="@+id/tvTitleMovie3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/purple_500"
+        android:padding="8dp"
+        android:text="Avnegers"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white">
+
+    </TextView>
+</merge>

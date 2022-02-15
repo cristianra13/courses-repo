@@ -1,0 +1,4 @@
+org\app\testing\mockito\services\IExamService.class
+org\app\testing\mockito\repository\IExamRepository.class
+org\app\testing\mockito\services\impl\ExamServiceImpl.class
+org\app\testing\mockito\models\Exam.class

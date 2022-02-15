@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Ruteo simple</h1>
+            <div class="navLinks">
+                <a [routerLink]="['/home']">Home</a>
+                <a [routerLink]="['/destino/1']">Destino</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+    </div>
+
+
+    <!-- // cuando detecta que esta en un modulo, y ese modulo tiene vincualdo
+    un ruteador por typescript, el componente elegido es el que se va arenderear -->
+    <router-outlet></router-outlet>
+</div>
+
+
+<hr class="mb-5"> Fecha: {{ time | async }}

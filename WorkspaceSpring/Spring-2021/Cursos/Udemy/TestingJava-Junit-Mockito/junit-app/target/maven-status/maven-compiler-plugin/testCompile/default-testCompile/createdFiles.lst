@@ -1,0 +1,9 @@
+app\moels\CuentaTest$VarEnvironmentTest.class
+app\moels\CuentaTest$SystemPrpertiesTest.class
+app\moels\CuentaTest$TimeOutTests.class
+app\moels\CuentaTest$AssumptionsTest.class
+app\moels\CuentaTest$PruebasParametrizadas.class
+app\moels\CuentaTest$JavaVersiontest.class
+app\moels\CuentaTest$SistemaOperativoTest.class
+app\moels\CuentaTest.class
+app\moels\BancoTest.class

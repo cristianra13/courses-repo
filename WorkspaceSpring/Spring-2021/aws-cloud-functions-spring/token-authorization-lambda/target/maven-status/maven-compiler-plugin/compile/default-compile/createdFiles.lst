@@ -1,0 +1,4 @@
+com\lambda\aws\dto\ErrorDto.class
+com\lambda\aws\EntryPointHandler.class
+com\lambda\aws\dto\RequestDto.class
+com\lambda\aws\dto\ResponseDto.class

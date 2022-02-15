@@ -1,0 +1,89 @@
+Comandos Kubernetes:
+
+NOTA: Tener instalado minikube para pruebas.
+
+# crear un cluster (crea una maquia virtual donde va a instalar todos los componentes de kubernetes):
+minikube start
+
+# Ver IP de minikube:
+minikube ip
+
+# ver ayudas o subcomandos:
+kubectl --help
+
+# Ver el contexto:
+kubectl config get-contexts
+
+# crear todos los componentes dentro del cluster, desde archivos yaml:
+kubectl apply -f <nombre_archivo>
+
+# crear todos los componentes dentro del cluster, desde archivos yaml, en el mismo directorio:
+kubectl apply -f .
+
+# Ver todos los pods:
+kubectl get pods
+
+# Describe un nodo
+kubectl describe nodes kubernetes-node-emt8.c.myproject.internal
+
+# Describe un pod
+kubectl describe pods/<nombre_pod>
+
+# Describe a pod identified by type and name in "pod.json"
+kubectl describe -f pod.json
+
+# Describe all pods
+kubectl describe pods
+
+# Describe pods by label name=myLabel
+kubectl describe po -l name=myLabel
+
+# Describe all pods managed by the 'frontend' replication controller (rc-created pods
+# get the name of the rc as a prefix in the pod the name).
+kubectl describe pods frontend
+
+
+# Ver objetos creados en el cluster:
+kubectl get all
+
+# ver logs de un pod:
+kubectl logs <nombre_pod>
+
+# ver logstiempo extendido de un pod:
+kubectl logs -f <nombre_pod>
+
+# Eliminar un recurso, elimina referencias:
+kubectl delete -f <nombre_archivo_yaml>
+
+# Eliminar un recurso en concreto
+kubectl delete pod/<nombre_pod>
+
+# Exponer un puerto de un contenedor:
+kubectl port-forward <nombre_pod> <puerto_salida>:<puerto_contenedor>
+
+# ver historial de un deployment
+kubectl rollout history <nombre_deployment>
+
+# ver status de rolling update que se esta haciendo:
+kubectl rollout status <nombre_deployment>
+
+# volver a una versión anterior en caso de algún fallo, por defecto undo, es a la versión anterior:
+kubectl rollout undo <nombre_deployment>
+
+# ingresar por SSH al pod:
+kubectl exec -it <nombre_pod> -c <nombre_container> -- sh
+
+# Filtrar pods por labels:
+kubectl get all -l  app=<nombre_matchLabels>
+
+# crear un namespace>
+kubectl create namespace <nombre_namespace>
+
+# crear un deployment dentro de un namespace:
+kubectl -n <nombre_namespace> apply -f <archivo.yaml>
+
+# ver deployment de un namespace:
+kubectl -n <nombre_namespace> get all
+
+# Cambiar el namespace por defecto:
+kubectl set-context minikube --namespace=<nombre_namespace>

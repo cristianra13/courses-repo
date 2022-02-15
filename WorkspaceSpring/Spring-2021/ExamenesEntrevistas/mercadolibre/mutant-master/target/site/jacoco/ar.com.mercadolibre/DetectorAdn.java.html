@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DetectorAdn.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">ar.com.mercadolibre</a> &gt; <span class="el_source">DetectorAdn.java</span></div><h1>DetectorAdn.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ar.com.mercadolibre;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author palucero
+ */
+<span class="fc" id="L15">public class DetectorAdn {</span>
+
+<span class="fc" id="L17">	private final Logger logger = Logger.getLogger(DetectorAdn.class.getName());</span>
+
+	public void setArrayMatrizCuadrada(char[] array, int posicion) {
+<span class="fc" id="L20">		this.MatrizCuadrada[posicion] = array;</span>
+<span class="fc" id="L21">	}</span>
+
+	private String[][] Matriz;
+	private char[][] MatrizCuadrada;
+	 
+    
+
+	private boolean ValidarMatriz(String[] data) {
+		try {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">			for (int i = 0; i &lt; data.length; i++) {</span>
+
+<span class="fc bfc" id="L32" title="All 2 branches covered.">				if (!data[i].matches(&quot;[ATCGatcg]*&quot;)) {</span>
+<span class="fc" id="L33">					logger.log(Level.WARNING, &quot;ERROR: Tiene letras fuera del dominio ATCG&quot;);</span>
+<span class="fc" id="L34">					return false;</span>
+				}
+
+<span class="fc bfc" id="L37" title="All 2 branches covered.">				if (data[i].length() != data.length) {</span>
+<span class="fc" id="L38">					logger.log(Level.WARNING, &quot;ERROR: una cadena tiene tamaño distinto al de la matriz&quot;);</span>
+<span class="fc" id="L39">					return false;</span>
+				}
+
+<span class="fc" id="L42">				this.setArrayMatrizCuadrada(data[i].toUpperCase().toCharArray(), i);</span>
+
+			}
+
+<span class="fc" id="L46">			return true;</span>
+<span class="nc" id="L47">		} catch (Exception ex) {</span>
+<span class="nc" id="L48">			logger.log(Level.SEVERE, &quot;Excepcion lanzada:&quot;, ex.getMessage());</span>
+<span class="nc" id="L49">			return false;</span>
+		}
+
+	}
+
+	@SuppressWarnings(&quot;finally&quot;)
+	public boolean IsMutant(AdnPOJO dna) {
+
+		try {
+
+<span class="fc" id="L59">			String[] data = dna.getDna().toArray(new String[0]);</span>
+
+<span class="fc" id="L61">			MatrizCuadrada = new char[data.length][data.length];</span>
+
+<span class="fc" id="L63">			int longitudMatriz = MatrizCuadrada.length;</span>
+
+<span class="fc" id="L65">			int contadorCadenasEncontradas = 0;</span>
+
+<span class="fc bfc" id="L67" title="All 2 branches covered.">			if (!ValidarMatriz(data)) {</span>
+<span class="fc" id="L68">				return false;</span>
+			}
+
+			do {
+<span class="fc bfc" id="L72" title="All 2 branches covered.">				for (int x = 0; x &lt; longitudMatriz; x++) {</span>
+					
+<span class="fc bfc" id="L74" title="All 2 branches covered.">					if (contadorCadenasEncontradas &lt; 2) {</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">						for (int y = 0; y &lt; longitudMatriz; y++) {</span>
+
+<span class="fc" id="L77">							char posicionActual = MatrizCuadrada[x][y];</span>
+
+							// Busqueda Horizontal
+<span class="fc bfc" id="L80" title="All 2 branches covered.">							if (contadorCadenasEncontradas &lt; 2) {</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">								if ((y + 4) &lt;= longitudMatriz) {</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">									if (BuscaHorizontal(x, y, posicionActual)) {</span>
+<span class="fc" id="L83">										contadorCadenasEncontradas++;</span>
+ 
+<span class="fc" id="L85">										logger.log(Level.INFO, &quot;Encontró cadena &quot; + posicionActual + &quot; en Horizontal:&quot; + x + &quot;,&quot; + y);</span>
+									}
+								}
+							} else {
+								break;
+							}
+
+<span class="fc bfc" id="L92" title="All 2 branches covered.">							if (contadorCadenasEncontradas &lt; 2) {</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">								if ((x + 4) &lt;= longitudMatriz) {</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">									if (BuscaVertical(x, y, posicionActual)) {</span>
+<span class="fc" id="L95">										contadorCadenasEncontradas++;</span>
+										 
+										
+<span class="fc" id="L98">										logger.log(Level.INFO, &quot;Encontró cadena &quot; + posicionActual + &quot; en Vertical:&quot; + x + &quot;,&quot; + y);</span>
+									}
+								}
+							} else {
+								break;
+							}
+
+<span class="fc bfc" id="L105" title="All 2 branches covered.">							if (contadorCadenasEncontradas &lt; 2) {</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">								if ((y + 4) &lt;= longitudMatriz) {</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">									if ((x + 4) &lt;= longitudMatriz) {</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">										if (BuscaDiagonal(x, y, posicionActual)) {</span>
+<span class="nc" id="L109">											contadorCadenasEncontradas++;</span>
+											
+<span class="nc" id="L111">											logger.log(Level.INFO, &quot;Encontró cadena &quot; + posicionActual + &quot; en Diagonal:&quot; + x</span>
+<span class="nc" id="L112">													+ &quot;,&quot; + y);										</span>
+										 
+										}
+									}
+								}
+							} else {
+								break;
+							}
+							// Busca por Diagonal Inversa
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">							if (contadorCadenasEncontradas &lt; 2) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">								if (y &gt;= 3) {</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">									if ((x + 4) &lt;= longitudMatriz) {</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">										if (BuscaDiagonalInversa(x, y, posicionActual)) {</span>
+<span class="fc" id="L125">											contadorCadenasEncontradas++;</span>
+											
+<span class="fc" id="L127">											logger.log(Level.INFO, &quot;Encontró cadena &quot; + posicionActual</span>
+<span class="fc" id="L128">													+ &quot; en DiagonalInversa:&quot; + x + &quot;,&quot; + y);	</span>
+											
+											 
+										}
+									}
+								}
+							} else {
+								break;
+							}
+						}
+					} else {
+						break;
+					}
+				}
+				break;
+			} while (contadorCadenasEncontradas &lt; 2);
+
+<span class="fc bfc" id="L145" title="All 2 branches covered.">			if (contadorCadenasEncontradas == 2) {</span>
+				try {
+
+<span class="fc" id="L148">					RegistroMutante grabar = new RegistroMutante();</span>
+<span class="fc" id="L149">					grabar.setEsMutante(1);</span>
+<span class="fc" id="L150">					grabar.start();</span>
+
+<span class="pc" id="L152">				} catch (Exception ex) {</span>
+
+<span class="nc" id="L154">					logger.log(Level.SEVERE, &quot;Excepcion lanzada:&quot;, ex.getMessage());</span>
+<span class="nc" id="L155">				} finally {</span>
+<span class="fc" id="L156">					return true;</span>
+				}
+
+			} else {
+
+				try {
+
+<span class="fc" id="L163">					RegistroMutante grabar = new RegistroMutante();</span>
+<span class="fc" id="L164">					grabar.setEsMutante(0);</span>
+<span class="fc" id="L165">					grabar.start();</span>
+
+<span class="pc" id="L167">				} catch (Exception ex) {</span>
+
+<span class="nc" id="L169">					logger.log(Level.SEVERE, &quot;Excepcion lanzada:&quot;, ex.getMessage());</span>
+<span class="nc" id="L170">				} finally {</span>
+<span class="fc" id="L171">					return false;</span>
+				}
+			}
+<span class="fc" id="L174">		} catch (Exception ex) {</span>
+
+<span class="fc" id="L176">			logger.log(Level.SEVERE, &quot;Excepcion lanzada:&quot;, ex.getMessage());</span>
+<span class="fc" id="L177">			return false;</span>
+		}
+
+	}
+
+	private boolean BuscaHorizontal(int fila, int posicion, char posicionActual) {
+
+<span class="fc" id="L184">		String cadena = &quot;&quot;;</span>
+<span class="fc" id="L185">		boolean resultado = false;</span>
+
+<span class="fc" id="L187">		cadena = &quot;&quot; + posicionActual + MatrizCuadrada[fila][posicion + 1] + MatrizCuadrada[fila][posicion + 2]</span>
+<span class="fc" id="L188">				+ MatrizCuadrada[fila][posicion + 3];</span>
+
+<span class="pc bpc" id="L190" title="14 of 21 branches missed.">		switch (cadena) {</span>
+		case &quot;AAAA&quot;:
+<span class="nc" id="L192">			resultado = true;</span>
+<span class="nc" id="L193">			break;</span>
+		case &quot;TTTT&quot;:
+<span class="fc" id="L195">			resultado = true;</span>
+<span class="fc" id="L196">			break;</span>
+		case &quot;CCCC&quot;:
+<span class="nc" id="L198">			resultado = true;</span>
+<span class="nc" id="L199">			break;</span>
+		case &quot;GGGG&quot;:
+<span class="fc" id="L201">			resultado = true;</span>
+<span class="fc" id="L202">			break;</span>
+		default:
+<span class="pc bpc" id="L204" title="1 of 2 branches missed.">			resultado = false;</span>
+			break;
+
+		}
+
+<span class="fc" id="L209">		return resultado;</span>
+	}
+
+	private boolean BuscaVertical(int fila, int posicion, char posicionActual) {
+
+<span class="fc" id="L214">		boolean resultado = false;</span>
+<span class="fc" id="L215">		String cadena = &quot;&quot;;</span>
+<span class="fc" id="L216">		cadena = &quot;&quot; + posicionActual + MatrizCuadrada[fila + 1][posicion] + MatrizCuadrada[fila + 2][posicion]</span>
+<span class="fc" id="L217">				+ MatrizCuadrada[fila + 3][posicion];</span>
+
+<span class="pc bpc" id="L219" title="14 of 21 branches missed.">		switch (cadena) {</span>
+		case &quot;AAAA&quot;:
+<span class="fc" id="L221">			resultado = true;</span>
+<span class="fc" id="L222">			break;</span>
+		case &quot;TTTT&quot;:
+<span class="fc" id="L224">			resultado = true;</span>
+<span class="fc" id="L225">			break;</span>
+		case &quot;CCCC&quot;:
+<span class="nc" id="L227">			resultado = true;</span>
+<span class="nc" id="L228">			break;</span>
+		case &quot;GGGG&quot;:
+<span class="nc" id="L230">			resultado = true;</span>
+<span class="nc" id="L231">			break;</span>
+		default:
+<span class="pc bpc" id="L233" title="1 of 2 branches missed.">			resultado = false;</span>
+			break;
+
+		}
+
+<span class="fc" id="L238">		return resultado;</span>
+	}
+
+	private boolean BuscaDiagonal(int fila, int posicion, char posicionActual) {
+<span class="fc" id="L242">		String cadena = &quot;&quot;;</span>
+<span class="fc" id="L243">		cadena = &quot;&quot; + posicionActual + MatrizCuadrada[fila + 1][posicion + 1] + MatrizCuadrada[fila + 2][posicion + 2]</span>
+<span class="fc" id="L244">				+ MatrizCuadrada[fila + 3][posicion + 3];</span>
+<span class="pc bpc" id="L245" title="20 of 21 branches missed.">		switch (cadena) {</span>
+		case &quot;AAAA&quot;:
+<span class="nc" id="L247">			return true;</span>
+		case &quot;TTTT&quot;:
+<span class="nc" id="L249">			return true;</span>
+		case &quot;CCCC&quot;:
+<span class="nc" id="L251">			return true;</span>
+		case &quot;GGGG&quot;:
+<span class="nc" id="L253">			return true;</span>
+		default:
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">			return false;</span>
+
+		}
+	}
+
+	private boolean BuscaDiagonalInversa(int fila, int posicion, char posicionActual) {
+<span class="fc" id="L261">		String cadena = &quot;&quot;;</span>
+<span class="fc" id="L262">		cadena = &quot;&quot; + posicionActual + MatrizCuadrada[fila + 1][posicion - 1] + MatrizCuadrada[fila + 2][posicion - 2]</span>
+<span class="fc" id="L263">				+ MatrizCuadrada[fila + 3][posicion - 3];</span>
+<span class="pc bpc" id="L264" title="14 of 21 branches missed.">		switch (cadena) {</span>
+		case &quot;AAAA&quot;:
+<span class="nc" id="L266">			return true;</span>
+		case &quot;TTTT&quot;:
+<span class="fc" id="L268">			return true;</span>
+		case &quot;CCCC&quot;:
+<span class="nc" id="L270">			return true;</span>
+		case &quot;GGGG&quot;:
+<span class="fc" id="L272">			return true;</span>
+		default:
+<span class="pc bpc" id="L274" title="1 of 2 branches missed.">			return false;</span>
+
+		}
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

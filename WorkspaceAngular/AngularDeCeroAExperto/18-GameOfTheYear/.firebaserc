@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "firestore-grafica-c616f": {
+      "hosting": {
+        "GameOfTheYear": [
+          "firestore-grafica-c616f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "firestore-grafica-c616f"
+  }
+}

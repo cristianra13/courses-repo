@@ -1,0 +1,15 @@
+p {
+  font-size: 3em;
+  line-height: 3em;
+  text-align: center;
+}
+
+/* con este psudo selector podemos escribir estilos sobre un
+objeto que sea propiedad de angular
+Por otra parte, nos permite saltar la encapsulación de estilos de angular en CSS
+*/
+::ng-deep .tooltip-red {
+  color: black !important;
+  background-color: lightcoral;
+}
+

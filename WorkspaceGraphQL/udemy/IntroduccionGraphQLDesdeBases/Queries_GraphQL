@@ -1,0 +1,134 @@
+Queries GraphQL:
+
+{
+  characters {
+    id
+    name
+    actor
+  }
+}
+
+Dos consultas en un solo query:
+
+{
+  idUno: character(id: 1) {
+    id
+    name
+  }
+  
+  idDos: character(id: 1) {
+    id
+    name
+    actor
+    photo
+    description
+  }
+}
+
+
+///////////////
+
+Fragments:
+{
+  character(id: 1) {
+    ...personajesFragment
+  }
+}
+
+"Código fragment"
+
+fragment personajesFragment on Character {
+  id
+  name
+  description
+  photo
+}
+
+// Query variables:
+-- Header
+{
+  "walter": "1",
+  "jesse": "2",
+  "hank": "4"
+}
+
+-- Query
+query listaPersonajes($walter: ID!, $jesse: ID!, $hank: ID!){
+  walter: character(id: $walter) {
+    ...personajesFragment
+  }
+  
+  jesse: character(id: $jesse) {
+    ...personajesFragment
+  }
+  
+  hank: character(id: $hank) {
+    ...personajesFragment
+  }
+}
+
+fragment personajesFragment on Character {
+  id
+  name
+  actor
+  description
+  photo
+  url
+}
+
+
+// Mutations:
+mutation {
+  addVote(character: 1) {
+    id
+    character
+    createdAt
+  }
+}
+
+-- mutations with queryvariables
+-- header
+{
+  "character": "1"
+}
+
+-- mutation
+mutation addVote($character: ID!){
+  addVote(character: $character) {
+    id
+    character
+    createdAt
+  }
+}
+
+
+// Directivas skip / include:
+-- include:
+query getCharacters($mostrarActor: Boolean!){
+  characters {
+    id
+    name	@include(if: $mostrarActor)
+    actor @include(if: $mostrarActor)
+  }
+}
+
+-- query variable
+
+{
+  "mostrarActor": false
+}
+
+-- skip:
+query getCharacters($esconderActor: Boolean!){
+  characters {
+    id
+    name	@skip(if: $esconderActor)
+    actor @skip(if: $esconderActor)
+  }
+}
+-- query variables:
+{
+  "esconderActor": false
+}
+
+

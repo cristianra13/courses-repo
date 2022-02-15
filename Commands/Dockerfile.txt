@@ -1,0 +1,6 @@
+# BASE DE LA IMAGEN, en este caso, ubuntu 1604,con FROM hereda todo el contenido de la imagen
+FROM ubuntu:16.04
+# con el comando RUN, durante la construcción de la imagen, podemos ejecutar lo que queramos, ejemplo
+RUN echo "hola" > /root/saludos.txt
+#Instalar paquetes en la imagen del repo de linux, con -y respondemos yes a todas las peticiones de linux
+RUN apt-get -y install nginx

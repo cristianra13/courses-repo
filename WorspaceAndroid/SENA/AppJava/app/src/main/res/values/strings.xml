@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AppJava</string>
+    <string name="titulo_app">Hola Mundo!!!</string>
+    <string name="bienvenida_msg">Bienvenid@s</string>
+    <string name="get_name">Your name here</string>
+</resources>

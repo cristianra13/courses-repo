@@ -1,0 +1,17 @@
+Comandos para uso de Node Version manager - NVM:
+
+$ nvm ls # lists all installed versions
+$ nvm install latest # install the latest version of nodejs and npm
+
+$ nvm ls # should list now the newly installed version
+$ nvm use 11.6.0 # start using version 11.6.0
+
+How to install other versions
+
+$ nvm install --version--
+
+
+And then switch to that version with:
+
+
+$ nvm use --version--

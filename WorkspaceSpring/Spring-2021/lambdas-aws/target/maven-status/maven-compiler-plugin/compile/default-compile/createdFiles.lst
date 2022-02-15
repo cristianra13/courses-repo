@@ -1,0 +1,3 @@
+com\app\lambdas\dto\LambdaRequest.class
+com\app\lambdas\dto\LambdaResponse.class
+com\app\lambdas\LambdaMethodHandler.class

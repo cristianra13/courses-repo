@@ -1,0 +1,8 @@
+<div class="product-grid">
+    <h3 appHighlight>{{product.title | uppercase}}</h3>
+    <img [src]="product.image" alt="">
+    <br>
+    <strong>{{product.price | currency}}</strong> {{product.description}}
+    <p>{{today | date:'yyy/MM/dd' }}</p>
+    <button (click)="addCart()">Agregar al carrito</button>
+</div>

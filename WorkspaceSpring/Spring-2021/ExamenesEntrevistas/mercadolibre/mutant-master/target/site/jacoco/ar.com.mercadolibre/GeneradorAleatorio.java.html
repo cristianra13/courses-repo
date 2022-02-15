@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GeneradorAleatorio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">ar.com.mercadolibre</a> &gt; <span class="el_source">GeneradorAleatorio.java</span></div><h1>GeneradorAleatorio.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ar.com.mercadolibre;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ *
+ * @author Pablo
+ */
+<span class="nc" id="L15">public class GeneradorAleatorio {</span>
+    
+    /*public static String[] MatrizAleatoria(int Dimension) {
+
+
+        String[] cadenaAdn = new String[Dimension];
+
+        Random aleatorio = new Random();
+
+        String letrasADN = &quot;ATCG&quot;;
+        for (int j = 0; j &lt; Dimension; j++) {
+            StringBuilder buffer = new StringBuilder();
+
+            for (int i = 0; i &lt; Dimension; i++) {
+                buffer.append(letrasADN.charAt(aleatorio.nextInt(letrasADN.length())));
+            }
+            cadenaAdn[j] = buffer.toString();
+        }
+        return cadenaAdn;
+    }*/
+   
+    public static List&lt;String&gt; ListaMatrizAleatoria(int Dimension) {
+        
+<span class="fc" id="L38">        List&lt;String&gt; cadena= new ArrayList&lt;String&gt;();     </span>
+
+<span class="fc" id="L40">        Random aleatorio = new Random();</span>
+
+<span class="fc" id="L42">        String letrasADN = &quot;ATCG&quot;;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        for (int j = 0; j &lt; Dimension; j++) {</span>
+<span class="fc" id="L44">            StringBuilder buffer = new StringBuilder();</span>
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">            for (int i = 0; i &lt; Dimension; i++) {</span>
+<span class="fc" id="L47">                buffer.append(letrasADN.charAt(aleatorio.nextInt(letrasADN.length())));</span>
+            }
+            
+<span class="fc" id="L50">            cadena.add(buffer.toString());</span>
+        }
+        
+<span class="fc" id="L53">        return cadena;</span>
+    }
+    
+}
+
+
+ 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

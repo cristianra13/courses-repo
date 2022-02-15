@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application' // decimos que es un proyedcto que se ejecuta como una app completa a traves del metodo main
+}
+
+group 'com.app'
+version '1.0'
+
+sourceCompatibility = 11
+
+application {
+    // indicamos por donde va a arrancar la aplicación
+    mainClassName = "com.app.jobsearch.JobSearch"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'com.beust', name: 'jcommander', version: '1.81'
+    implementation group: 'io.github.openfeign', name: 'feign-core', version: '11.1'
+    implementation group: 'io.github.openfeign', name: 'feign-gson', version: '11.1'
+}

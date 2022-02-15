@@ -1,0 +1,12 @@
+<h1>Perfil de usuario</h1>
+<hr>
+
+
+<!-- Se retorna un observable por lo que se usa el pipe async y esto se asigna a una
+      propiedad llamada profile
+-->
+<pre *ngIf="auth.userProfile$ | async as profile">
+
+  <code>{{ profile | json }}</code>
+
+</pre>

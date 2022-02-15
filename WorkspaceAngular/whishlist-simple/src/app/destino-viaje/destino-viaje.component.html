@@ -1,0 +1,27 @@
+
+<div	class="card-content">
+  <div	class="card-img">
+    <img	src="https://placeimg.com/380/230/nature"	alt="">
+    <span><h4>{{position}}</h4></span>
+  </div>
+  <div	class="card-desc">
+    <h3>{{destino.nombre}}</h3>
+    <p>Servicios</p>
+    <ul>
+      <li *ngFor="let servicio of destino.servicios">
+        <span [ngSwitch]="servicio">
+          <i *ngSwitchCase="'Desayuno'" style="color: red">{{servicio}}</i>
+          <i *ngSwitchDefault>{{servicio}}</i>
+          {{servicio}}
+        </span>
+      </li>
+    </ul>
+    <a	href="#"	class="btn-card" (click)="ir()">Ir!</a>
+    <!--validamos con typescrpt si el span es verdadero y lo dejamos en vacío, de lo contrario asignamos none-->
+    <span *ngIf="destino.isSelected()">
+      <span ngNonBindable>{{PREFERIDO}}</span>
+    </span>
+
+    <a [routerLink]="['/destino']">Ver detalle</a>
+  </div>
+</div>

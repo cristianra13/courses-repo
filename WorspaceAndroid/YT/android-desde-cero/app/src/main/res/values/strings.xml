@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">android-desde-cero</string>
+    <string name="btnButton">Enviar</string>
+    <string name="tvEmail">Email</string>
+    <string name="tvPhone">Teléfono</string>
+    <string name="tvPassword">Password</string>
+</resources>

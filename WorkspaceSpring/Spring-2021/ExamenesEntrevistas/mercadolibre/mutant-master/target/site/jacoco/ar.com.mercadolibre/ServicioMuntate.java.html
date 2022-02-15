@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ServicioMuntate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant</a> &gt; <a href="index.source.html" class="el_package">ar.com.mercadolibre</a> &gt; <span class="el_source">ServicioMuntate.java</span></div><h1>ServicioMuntate.java</h1><pre class="source lang-java linenums">package ar.com.mercadolibre;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.core.MediaType;
+
+import ar.com.mercadolibre.AdnPOJO;
+import ar.com.mercadolibre.DetectorAdn;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author palucero
+ */
+@Path(&quot;service&quot;)
+@Produces({ &quot;application/json&quot; })
+<span class="fc" id="L30">public class ServicioMuntate {</span>
+
+<span class="fc" id="L32">	private final Logger logger = Logger.getLogger(ServicioMuntate.class.getName());</span>
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path(&quot;mutant&quot;)
+	public Response ProcesarAdn(AdnPOJO dna) {
+
+		try {
+<span class="fc" id="L40">			DetectorAdn nuevoElemento = new DetectorAdn();</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">			if (nuevoElemento.IsMutant(dna)) {</span>
+<span class="fc" id="L43">				return Response.ok().build();</span>
+			} else {
+<span class="fc" id="L45">				return Response.status(403).type(&quot;text/plain&quot;).entity(&quot;Forbidden&quot;).build();</span>
+			}
+<span class="nc" id="L47">		} catch (Exception ex) {</span>
+<span class="nc" id="L48">			logger.log(Level.SEVERE, &quot;Excepcion lanzada:&quot;, ex.getMessage());</span>
+<span class="nc" id="L49">			return Response.status(403).type(&quot;text/plain&quot;).entity(&quot;Forbidden&quot;).build();</span>
+		}
+
+	}
+
+	@GET
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path(&quot;ArrayTest&quot;)
+	public AdnPOJO ObtenerMatrizPrueba(@QueryParam(&quot;dimension&quot;) int dimension) {
+
+<span class="fc" id="L60">		AdnPOJO dna = new AdnPOJO();</span>
+<span class="fc" id="L61">		dna.setDna(GeneradorAleatorio.ListaMatrizAleatoria(dimension));</span>
+<span class="fc" id="L62">		return dna;</span>
+	}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path(&quot;TestMutant&quot;)
+	public Response TestMutantApi(@QueryParam(&quot;dimension&quot;) int dimension) {
+
+<span class="fc" id="L70">		ar.com.mercadolibre.AdnPOJO dna = new ar.com.mercadolibre.AdnPOJO();</span>
+
+<span class="fc" id="L72">		dna.setDna(GeneradorAleatorio.ListaMatrizAleatoria(dimension));</span>
+
+<span class="fc" id="L74">		ar.com.mercadolibre.DetectorAdn nuevoElemento = new ar.com.mercadolibre.DetectorAdn();</span>
+
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">		if (nuevoElemento.IsMutant(dna)) {</span>
+<span class="fc" id="L77">			return Response.ok().build();</span>
+		} else {
+<span class="nc" id="L79">			return Response.status(403).type(&quot;text/plain&quot;).entity(&quot;Forbidden&quot;).build();</span>
+		}
+
+	}
+
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path(&quot;stats&quot;)
+	public StatsPOJO Stats() {
+		try {
+
+<span class="fc" id="L91">			RegistroMutante nuevoRegistro = new RegistroMutante();</span>
+<span class="fc" id="L92">			nuevoRegistro.Estadisticas();</span>
+<span class="fc" id="L93">			StatsPOJO estadisticas = new StatsPOJO();</span>
+<span class="fc" id="L94">			estadisticas.setCount_mutant_dna(nuevoRegistro.getCantidadMutante());</span>
+<span class="fc" id="L95">			estadisticas.setCount_humnan_dna(nuevoRegistro.getCantidadHumano());</span>
+<span class="fc" id="L96">			estadisticas.setRatio(nuevoRegistro.getIndice());</span>
+<span class="fc" id="L97">			return estadisticas;</span>
+<span class="nc" id="L98">		} catch (Exception ex) {</span>
+<span class="nc" id="L99">			logger.log(Level.SEVERE, &quot;Excepcion lanzada:&quot;, ex.getMessage());</span>
+<span class="nc" id="L100">			return new StatsPOJO();</span>
+		}
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

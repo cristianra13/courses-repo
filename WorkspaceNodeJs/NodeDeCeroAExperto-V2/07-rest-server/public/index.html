@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="880010084777-7tscca0fal05obvjgp359r13krcis6bi.apps.googleusercontent.com">
+    <title>Google SignIn</title>
+</head>
+
+<body>
+    <h1>Google SignIn</h1>
+    <hr>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+
+</body>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+<script>
+    //Esta es la parte que haria el frontend
+
+    function onSignIn(googleUser) {
+
+        var url = (window.location.hostname.includes('localhost')) ?
+            'http://localhost:3000/api/auth/google-login' :
+            'https://rest-server-app-cr.herokuapp.com/api/auth/google-login'
+
+        var profile = googleUser.getBasicProfile();
+        var id_token = googleUser.getAuthResponse().id_token;
+        const data = {
+            id_token
+        }
+
+        fetch(
+                url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+            )
+            .then(resp => resp.json())
+            .then(data => data)
+            .catch(console.log)
+
+    }
+
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function() {
+            console.log('User signed out.');
+        });
+    }
+</script>
+
+</html>

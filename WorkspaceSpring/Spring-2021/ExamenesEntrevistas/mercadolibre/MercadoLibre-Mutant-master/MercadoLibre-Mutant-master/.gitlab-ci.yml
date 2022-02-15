@@ -1,0 +1,11 @@
+image: maven
+
+stages:
+  - test
+
+test:jdk8:
+  stage: test
+  script:
+    - mvn test
+  image: maven:latest
+

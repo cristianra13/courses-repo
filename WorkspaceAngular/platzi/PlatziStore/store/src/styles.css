@@ -1,0 +1,16 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.priduct-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 576px) {
+    .priduct-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

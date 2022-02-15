@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MisContactos</string>
+
+    <string name="nombreContacto">Cristian Real</string>
+    <string name="telefonoContacto">300123456789</string>
+    <string name="emailContacto">cristian@email.com</string>
+
+    <string name="pNombre">nombre</string>
+    <string name="pTelefono">telefono</string>
+    <string name="pEmail">email</string>
+</resources>

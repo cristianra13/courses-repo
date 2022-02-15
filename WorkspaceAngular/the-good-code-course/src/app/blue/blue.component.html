@@ -1,0 +1,26 @@
+<!--Nos aseguramos de llamar al evento click de angular,
+que es quien al momento de dar click sobre el cuadro, llame al metodo onclic y este pueda enviar a la clase
+padre el número ce clicks
+IMPORTANTE: el envio de información al padre ocurre desde el HTML hijo
+-->
+<!--<p (click)="onClick()">
+  &lt;!&ndash; podemos hacer una validación con operador ternario &ndash;&gt;
+  &lt;!&ndash;<span>{{(clicks) ? 'TRUE': 'FALSE'}}</span>&ndash;&gt;
+
+  &lt;!&ndash;Sentencia de código dentro de una interpolación&ndash;&gt;
+  <span>{{(clicks % 2 == 1) ? title.replace('Hello', '🦆').toUpperCase(): title}}</span>
+  <img src="{{url}}">
+  &lt;!&ndash; de está manera podemos decirle que le queremos pasar una propiedad al componente hijo que
+   en este caso es img, esto es llamado propertyBinding&ndash;&gt;
+  <img [src]="url">
+
+&lt;!&ndash;  <span class="text-right">{{clicks > 10 ? '🛫' : '🛬'}}</span>&ndash;&gt;
+  <span class="{{starClass}}">{{clicks > 10 ? '🛫' : '🛬'}}</span>
+
+</p>-->
+
+
+<div class="box" (click)="onClick($event); sayHi('Cristian'); isEven = clicks % 2 == 0">
+  <span (click)="sayHi('Desde span', $event)">{{title}}</span>
+  <pre>{{ (isEven) ? 'Par' : 'Impar' }}</pre>
+</div>

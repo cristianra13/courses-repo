@@ -1,0 +1,14 @@
+p {
+  padding: 25px 10px;
+  border-radius: 5px;
+  background-color: red;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease-in;
+}
+:hover{
+  transform: scale(1.02);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.4);
+}
+

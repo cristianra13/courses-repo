@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--android:layout_width="50dp" Solo ocupa el 50% de ancho disponible-->
+    <!--android:layout_height="50dp"> ocupa solo el 50% del alto disponible-->
+    <!--android:layout_width="wrap_content"-->
+
+    <!--activities-->
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="start"
+        android:background="#FFCDD2">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="top|center"
+        android:background="#F8BBD0">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="end"
+        android:background="#E1BEE7">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center|start"
+        android:background="#D1C4E9">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:background="#FFF9C4">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center|end"
+        android:background="#C5CAE9">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="bottom|start"
+        android:background="#B3E5FC">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="bottom|center"
+        android:background="#FFE0B2">
+    </View>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="bottom|end"
+        android:background="#DCEDC8">
+    </View>
+
+</FrameLayout>

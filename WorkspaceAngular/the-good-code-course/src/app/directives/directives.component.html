@@ -1,0 +1,35 @@
+<header>
+<!--  <input type="text" [(ngModel)]="text" placeholder="Escribe algo..." (keyup.enter)="save()">-->
+  <input type="text" [(ngModel)]="text" placeholder="Escribe algo..." (keyup.enter)="savePerson()">
+  <button type="button" (click)="removeAll()">Borrar todo</button>
+</header>
+
+<pre>{{ names.join(', ') }}</pre>
+<!--<pre>{{ names | json }}</pre>-->
+
+<div>
+  <p *ngFor="let name of names; let indice = index">{{indice}} : {{ name}}</p>
+</div>
+
+<p *ngIf="people.length > 0; else noPeople">
+  <!--
+  * si cimple la condicion [ngClass]="{'long-name' : person.name.length > 10}"
+    aplica el estilo el cual ingresa por la izquierda de CSS
+  * ngCLass nos permite agregar clases a partir de condiciones
+  * con el null le decimos que no queremos aplecar la propiedad ngStyle
+  -->
+  <span *ngFor="let person of people"
+        [ngClass]="{'long-name' : person.name.length > 10}"
+        [style.background-color]="(person.name.length > 5) ? 'red' : null"
+        [ngStyle]="{'font-style' : (person.name.length > 10) ? 'italic' : null}"
+  >
+    {{person.icon}} - {{person.id}} - {{person.name}}
+    <hr>
+  </span>
+</p>
+
+<!--ngTemplate va a mostrar lo que esta en su contenido,
+cuando el if else que esta anterior a esto, no se cumpla-->
+<ng-template #noPeople>
+  <pre class="text-center">No has insertado ninguna persona. Por favor escribe un nombre y pulse ENTER</pre>
+</ng-template>

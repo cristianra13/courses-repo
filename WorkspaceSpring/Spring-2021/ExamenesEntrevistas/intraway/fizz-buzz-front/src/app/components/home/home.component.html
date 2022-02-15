@@ -1,0 +1,106 @@
+<div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    </nav>
+    <h1>FizzBuzz - Intraway</h1>
+
+    <form #dataForm="ngForm" (ngSubmit)="sendData(dataForm.value)">
+        <hr class="col-md-9">
+
+        <div class="row">
+
+            <div class="form-group col-md-4 mb-2">
+                <input type="number" class="form-control" name="min" placeholder="Valor mínimo" ngModel #min="ngModel" required autocomplete="off">
+                <div *ngIf="showAlertMin" class="alert alert-danger" role="alert">
+                    El valor es obligatorio
+                </div>
+            </div>
+
+            <div class="form-group col-md-4 mb-2">
+                <input type="number" class="form-control" name="max" placeholder="Valor máximo" ngModel #max="ngModel" required autocomplete="off">
+                <div *ngIf="showAlertMin" class="alert alert-danger" role="alert">
+                    El valor es obligatorio
+                </div>
+            </div>
+
+            <div class="col">
+                <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+            </div>
+
+            <div class="col">
+                <div *ngIf="showAlert" class="alert alert-danger" role="alert">
+                    El valor mínimo no puede ser mayor que el valor máximo!
+                </div>
+            </div>
+
+
+            <h1 class="mt-5">Listado de Resultados</h1>
+            <hr>
+
+            <div class="row">
+
+                <table class="table table-hover">
+                    <thead class="table-borderless">
+                        <tr>
+                            <th scope="col">UUID</th>
+                            <th scope="col">Min - Max</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Resultado</th>
+                            <th scope="col">Ver más</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let fizzBuzz of listFizzBuzz">
+                            <th scope="row">{{ fizzBuzz.uuid }}</th>
+                            <td>{{ fizzBuzz.min }} - {{ fizzBuzz.max }}</td>
+                            <td>{{ fizzBuzz.description }}</td>
+                            <td>{{ fizzBuzz.list | slice:0 :25}}...</td>
+                            <td>
+                                <button type="button" (click)="onShowModalInfo(fizzBuzz)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewFizzBuzzModal" data-bs-whatever="@mdo">Ver más</button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Final table -->
+            </div>
+        </div>
+        <!-- final div row -->
+    </form>
+    <!-- Final Form -->
+
+    <button [hidden]="true" type="button" id="openUserInfo" data-toggle="modal" data-target="#viewFizzBuzzModal">
+    </button>
+
+    <div class="modal fade" id="viewFizzBuzzModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Resultado FizzBuzz</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="uuid-input" class="col-form-label">UUID:</label>
+                            <input type="text" class="form-control" id="uuid-input" [value]="selectedFizzBuzz?.uuid" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="resultado-text" class="col-form-label">Resultado de: {{selectedFizzBuzz?.min}} - {{selectedFizzBuzz?.max}}</label>
+                            <textarea class="form-control animated" style="height: 50px;" id="resultado-text" [value]="selectedFizzBuzz?.list" disabled></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

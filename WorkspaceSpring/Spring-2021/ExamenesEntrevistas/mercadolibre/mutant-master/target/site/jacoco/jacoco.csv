@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+mutant,ar.com.mercadolibre,AdnPOJO,52,61,1,1,0,5,4,5,3,5
+mutant,ar.com.mercadolibre,ServicioMuntate,300,285,2,4,7,21,5,8,3,7
+mutant,ar.com.mercadolibre,DetectorAdn,1760,1779,69,69,24,92,52,36,3,10
+mutant,ar.com.mercadolibre,StatsPOJO,100,113,1,1,1,10,5,8,4,8
+mutant,ar.com.mercadolibre,ApplicationConfig,101,0,2,0,4,0,8,0,7,0
+mutant,ar.com.mercadolibre,GeneradorAleatorio,116,174,0,6,1,9,4,6,4,3
+mutant,ar.com.mercadolibre,RegistroMutante,887,705,22,6,12,57,17,9,3,9

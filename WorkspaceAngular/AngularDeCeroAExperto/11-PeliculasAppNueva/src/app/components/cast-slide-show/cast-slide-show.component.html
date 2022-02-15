@@ -1,0 +1,9 @@
+<div class="swiper-container">
+
+    <div class="swiper-wrapper">
+        <div class="swiper-slide text-white text-center" *ngFor="let character of cast">
+
+            <img class="img img-thumbnail" [src]="character.profile_path | poster" [alt]="character.name" /> {{character.name}}
+        </div>
+    </div>
+</div>

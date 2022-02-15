@@ -1,0 +1,12 @@
+<form class="item">
+
+  <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="nombreInput">
+
+
+  <!-- Vamos a usar referncias locales, esto se hace con #-->
+  <input type="text" name="apellido" id="apellido" placeholder="Apellido" [(ngModel)]="apellidoInput">
+
+<!--    <button type="submit" class="btn btn-primary" (click)="onAgregarPersona(nombreInput, apellidoInput)">Agregar</button>-->
+  <button type="submit" class="btn btn-primary" (click)="onAgregarPersona()">+</button>
+
+</form>

@@ -1,0 +1,17 @@
+<div class="box" id="heading">
+  <h1 >{{titulo}}</h1>
+</div>
+<div class="box">
+  <!-- vamos a mandar información desde este que es el padre a la clase hija -->
+  <!-- Este atributo de pserosna, es el mismo que se declaro en PersonaComponent -->
+  <app-persona
+    *ngFor="let personaElemento of personas; let indice = index"
+    [persona]="personaElemento"
+    [indice]="indice"
+  ></app-persona>
+</div>
+
+<div class="box">
+    <!-- se envía al metodo el evento que se etsá emitiendo para ser monitorizado -->
+  <app-formulario></app-formulario>
+</div>

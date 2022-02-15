@@ -1,0 +1,19 @@
+{{> head }}
+
+    {{!-- De está manera llamamos el parcial que necesitamos, debe llevar está estructura obligatoriamente
+    solamente cambia el nombre del parcial
+    en este caso, usamos el navbar --}}
+    {{> navbar }}
+
+    <div class="jumbotron">
+        <h1 class="display-3">Hello, {{ capitalizar 'cristian real ariza' }}</h1>
+        <p class="lead">Jumbo helper text</p>
+        <hr class="my-2">
+        <p>More info</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+        </p>
+    </div>
+
+
+{{> footer}}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <label >Nombre persona</label>
+      <!-- con $event, se va air campturando lo que se vaya agregando en el campo y se va aenvíar al metodo
+        [(ngModel)]="tituloPersona" de esta manera se aplica el concepto de two-way binding
+      -->
+      <input type="text" class="form-control" [(ngModel)]="tituloPersona" />
+      {{tituloPersona}}
+      <h1>Listado de personas</h1>
+      <!-- [disabled] con los corchetes se dice que a esta propiedad de HTML, le vamos a asignar el valor que envé angula,
+      se usa el concep property binding
+      * en el evento clic se manda a llamar un metodo de angular, el (clic) va dentro de parentesis para indicar que se trabajan con eventos
+      -->
+      <button class="btn btn-primary" [disabled]="agregarPersona" (click)="onAgregarPersona()" >Agregar persona</button>
+      <p *ngIf="personaCreada; else sinPersona">{{agregarPersonaStatus}} con título de {{tituloPersona}}</p>
+      <!-- está sección solo se muestra si el if es falso o mejor dicjho si llega al else
+      Adicional se le asigna un identificador al template el cual es sinPersona con #
+      -->
+      <ng-template #sinPersona>
+        <p>No se ha agregado ninguna persona</p>
+      </ng-template>
+      <app-persona></app-persona>
+    </div>
+  </div>
+</div>
+</body>
+</html>
