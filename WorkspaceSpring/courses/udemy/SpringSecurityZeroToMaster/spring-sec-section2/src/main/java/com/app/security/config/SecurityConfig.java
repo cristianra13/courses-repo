@@ -46,14 +46,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().ignoringAntMatchers("/contact").csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         .and()
         .authorizeRequests()
-        .antMatchers("/my-account").permitAll()
-        .antMatchers("/balance").permitAll()
-        .antMatchers("/loans").permitAll()
-        .antMatchers("/cards").permitAll()
+        .antMatchers("/my-account").hasAnyAuthority("WRITE")
+        .antMatchers("/balance").hasAnyAuthority("READ")
+        .antMatchers("/loans").hasAnyAuthority("DELETE")
+        .antMatchers("/cards").authenticated()
+        .antMatchers("/user").authenticated()
         .antMatchers("/notices").permitAll() // No require autenticación
         .antMatchers("/contact").permitAll()
-        .and()
-        .formLogin()
+        //.and()
+        //.formLogin()
         .and()
         .httpBasic();
 
