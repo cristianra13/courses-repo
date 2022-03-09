@@ -1,0 +1,41 @@
+<h2>By Country</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <app-country-input
+      (onEnter)="search($event)"
+      (onDebounce)="suggest($event)"
+      placeholder="Search by Country..."
+    ></app-country-input>
+  </div>
+</div>
+
+<ul *ngIf="showSuggest" class="list-group">
+  <li *ngFor="let country of suggestCountries"
+    class="list-group-item list-group-item-action">
+    <a class="nav-link"
+      [routerLink]="['/country/', country.cca2]">
+      {{ country.name.common }}
+    </a>
+  </li>
+
+  <li class="list-group-item list-group-item-action"
+      (click)="searchSuggest(searchTerm)">
+    <a class="nav-link">
+      Search: {{ searchTerm }}
+    </a>
+  </li>
+</ul>
+
+<hr>
+
+<div *ngIf="hasError" class="alert alert-danger">
+  Not have be found nothing with text {{searchTerm}}
+</div>
+
+<div *ngIf="countries.length > 0gf" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>
