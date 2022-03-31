@@ -1,11 +1,18 @@
 package com.app.security.config;
 
 
+import com.app.security.config.filters.AuthoritiesLoggingAfterFilter;
+import com.app.security.config.filters.AuthoritiesLoggingAtFilter;
+import com.app.security.config.filters.JWTTokenGeneratorFilter;
+import com.app.security.config.filters.JWTTokenValidatorFilter;
+import com.app.security.config.filters.RequestValidationBeforeFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,13 +21,16 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -28,7 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     // securizamos nuestros endpoints
-    http.cors().configurationSource(new CorsConfigurationSource() {
+    http
+      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+      .and()
+      .cors().configurationSource(new CorsConfigurationSource() {
       // Definimos los cors permitidos
           @Override
           public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
@@ -37,19 +50,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             configuration.setAllowedMethods(Collections.singletonList("*"));
             configuration.setAllowCredentials(true);
             configuration.setAllowedHeaders(Collections.singletonList("*"));
+            configuration.setExposedHeaders(List.of("Authorization"));
             configuration.setMaxAge(3600L);
             return configuration;
           }
         })
         .and()
         //.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        .csrf().ignoringAntMatchers("/contact").csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        .and()
+        .csrf().disable()
+        //.ignoringAntMatchers("/contact").csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+        //.and()
+        .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
+        .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
+        .addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
+        .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
+        .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
         .authorizeRequests()
-        .antMatchers("/my-account").hasAnyAuthority("WRITE")
-        .antMatchers("/balance").hasAnyAuthority("READ")
-        .antMatchers("/loans").hasAnyAuthority("DELETE")
-        .antMatchers("/cards").authenticated()
+        .antMatchers("/myAccount").hasRole("USER")
+        .antMatchers("/myBalance").hasAnyRole("USER", "ADMIN")
+        .antMatchers("/myLoans").hasRole("ROOT")
+        .antMatchers("/myCards").authenticated()
         .antMatchers("/user").authenticated()
         .antMatchers("/notices").permitAll() // No require autenticación
         .antMatchers("/contact").permitAll()

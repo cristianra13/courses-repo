@@ -14,7 +14,7 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "account_transaction")
+@Table(name = "account_transactions")
 public class AccountTransaction {
 
   @Id

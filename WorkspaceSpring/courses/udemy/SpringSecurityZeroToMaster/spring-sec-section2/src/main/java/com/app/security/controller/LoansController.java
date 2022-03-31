@@ -16,7 +16,7 @@ public class LoansController {
   @Autowired
   private LoansRepository loansRepository;
 
-  @PostMapping("my-loans")
+  @PostMapping("myLoans")
   public List<Loans> getLoanDetails(@RequestBody Customer customer) {
     List<Loans> loans = loansRepository.findByCustomerIdOrderByStartDtDesc(customer.getId());
     if (loans != null) {

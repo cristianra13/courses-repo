@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @AllArgsConstructor
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 @ToString
 @EqualsAndHashCode
 @Entity
+@Table(name = "accounts")
 public class Account {
   @Id
   @Column(name = "account_number")
