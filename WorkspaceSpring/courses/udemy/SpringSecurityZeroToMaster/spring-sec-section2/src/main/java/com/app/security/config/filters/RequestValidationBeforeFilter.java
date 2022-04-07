@@ -27,10 +27,10 @@ public class RequestValidationBeforeFilter implements Filter {
       header = header.trim();
       if (StringUtils.startsWithIgnoreCase(header, AUTHENTICATION_SCHEMA_BASIC)) {
         byte[] base64Token = header.substring(6).getBytes(StandardCharsets.UTF_8);
-        byte[] decoed;
+        byte[] decoded;
         try {
-          decoed = Base64.getDecoder().decode(base64Token);
-          String token = new String(decoed, getCredentialsCharset(servletRequest));
+          decoded = Base64.getDecoder().decode(base64Token);
+          String token = new String(decoded, getCredentialsCharset(servletRequest));
           int delim = token.indexOf(":");
           if (delim == -1) {
             throw new BadCredentialsException("Invalida basic authentication token");

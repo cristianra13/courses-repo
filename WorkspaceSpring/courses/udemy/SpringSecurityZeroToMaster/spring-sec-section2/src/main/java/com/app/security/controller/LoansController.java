@@ -4,6 +4,7 @@ import com.app.security.model.Customer;
 import com.app.security.model.Loans;
 import com.app.security.repository.LoansRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ public class LoansController {
   private LoansRepository loansRepository;
 
   @PostMapping("myLoans")
+  @PostAuthorize("hasRole('ROOT')")
   public List<Loans> getLoanDetails(@RequestBody Customer customer) {
     List<Loans> loans = loansRepository.findByCustomerIdOrderByStartDtDesc(customer.getId());
     if (loans != null) {
