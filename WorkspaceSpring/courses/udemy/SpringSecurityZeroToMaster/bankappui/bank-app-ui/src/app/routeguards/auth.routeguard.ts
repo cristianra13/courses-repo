@@ -11,10 +11,10 @@ export class AuthActivateRouteGuard implements CanActivate {
     }
 
     canActivate(route:ActivatedRouteSnapshot, state:RouterStateSnapshot){
-        this.user = JSON.parse(sessionStorage.getItem('userdetails'));
-        if(!this.user){
-            this.router.navigate(['login']);
-        }
+        // this.user = JSON.parse(sessionStorage.getItem('userdetails'));
+        // if(!this.user){
+        //     this.router.navigate(['login']);
+        // }
         return true;
     }
 

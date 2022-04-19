@@ -40,7 +40,7 @@ import { AuthActivateRouteGuard } from './routeguards/auth.routeguard';
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN',
     }),
-  ],
+  ], 
   providers: [
     {
       provide : HTTP_INTERCEPTORS,

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   validateUser(loginForm: NgForm) {
-    debugger;
+    // debugger;
     this.loginService.validateLoginDetails(this.model).subscribe(
       responseData => {
         this.model = <any> responseData.body;
@@ -33,13 +33,7 @@ export class LoginComponent implements OnInit {
         let xsrf = this.getCookie('XSRF-TOKEN');
         window.sessionStorage.setItem('XSRF-TOKEN', xsrf);
         console.log('redirect to dashboard');
-        this.router.navigate(['dashboard']).then(e =>{
-          if (e){
-            console.log("good work" + e)
-          }else{
-            console.log("bad work")
-          }
-        });
+        this.router.navigate(['dashboard']);
       }, error => {
         console.log(error);
       });
