@@ -17,7 +17,7 @@ public class Book {
   @NotNull
   private Integer bookId;
   @NotBlank
-  private String bookname;
+  private String bookName;
   @NotBlank
   private String bookAuthor;
 

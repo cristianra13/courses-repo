@@ -44,7 +44,7 @@ public class LibraryEventProducerUnitTest {
     Book book = Book.builder()
       .bookId(456)
       .bookAuthor("Cristian Real")
-      .bookname("kafka Using Spring Boot")
+      .bookName("kafka Using Spring Boot")
       .build();
 
     LibraryEvent libraryEvent = LibraryEvent.builder()
@@ -70,7 +70,7 @@ public class LibraryEventProducerUnitTest {
     Book book = Book.builder()
       .bookId(456)
       .bookAuthor("Cristian Real")
-      .bookname("kafka Using Spring Boot")
+      .bookName("kafka Using Spring Boot")
       .build();
 
     LibraryEvent libraryEvent = LibraryEvent.builder()

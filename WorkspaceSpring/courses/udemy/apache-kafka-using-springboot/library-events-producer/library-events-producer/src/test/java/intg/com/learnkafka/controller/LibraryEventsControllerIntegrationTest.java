@@ -68,7 +68,7 @@ public class LibraryEventsControllerIntegrationTest {
     Book book = Book.builder()
       .bookId(456)
       .bookAuthor("Cristian Real")
-      .bookname("kafka Using Spring Boot")
+      .bookName("kafka Using Spring Boot")
       .build();
 
     LibraryEvent libraryEvent = LibraryEvent.builder()
@@ -88,7 +88,39 @@ public class LibraryEventsControllerIntegrationTest {
 
     ConsumerRecord<Integer, String> consumerRecord = KafkaTestUtils.getSingleRecord(consumer, TOPIC);
     // Thread.sleep(6000);
-    String expected = "{\"libraryEventId\":null,\"libraryEventType\":\"NEW\",\"book\":{\"bookId\":456,\"bookname\":\"kafka Using Spring Boot\",\"bookAuthor\":\"Cristian Real\"}}";
+    String expected = "{\"libraryEventId\":null,\"libraryEventType\":\"NEW\",\"book\":{\"bookId\":456,\"bookName\":\"kafka Using Spring Boot\",\"bookAuthor\":\"Cristian Real\"}}";
+    String value = consumerRecord.value();
+
+    Assertions.assertEquals(expected, value);
+  }
+
+  @Test
+  public void putLibraryEventTest() throws InterruptedException {
+    // given
+    Book book = Book.builder()
+      .bookId(456)
+      .bookAuthor("Cristian Real")
+      .bookName("kafka Using Spring Boot")
+      .build();
+
+    LibraryEvent libraryEvent = LibraryEvent.builder()
+      .libraryEventId(123)
+      .book(book)
+      .build();
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.set("Content-Type", MediaType.APPLICATION_JSON_VALUE);
+    HttpEntity<LibraryEvent> request = new HttpEntity<>(libraryEvent, headers);
+
+    // when
+    ResponseEntity<LibraryEvent> response = testRestTemplate.exchange(PATH, HttpMethod.PUT, request, LibraryEvent.class);
+
+    // then
+    Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+
+    ConsumerRecord<Integer, String> consumerRecord = KafkaTestUtils.getSingleRecord(consumer, TOPIC);
+    // Thread.sleep(6000);
+    String expected = "{\"libraryEventId\":123,\"libraryEventType\":\"UPDATE\",\"book\":{\"bookId\":456,\"bookName\":\"kafka Using Spring Boot\",\"bookAuthor\":\"Cristian Real\"}}";
     String value = consumerRecord.value();
 
     Assertions.assertEquals(expected, value);
