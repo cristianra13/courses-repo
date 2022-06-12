@@ -8,7 +8,7 @@ curl -i \
 PUT WITH ID
 --------------
 curl -i \
--d '{"libraryEventId": 123, "book": {"bookId": "456", "bookName": "Kafka using Spring Boot", "bookAuthor": "CristianReal"}}' \
+-d '{"libraryEventId": 1, "book": {"bookId": "456", "bookName": "Kafka using Spring Boot - course", "bookAuthor": "CristianReal"}}' \
 -H "Content-Type: application/json" \
 -X PUT http://localhost:8080/v1/libraryevent
 
